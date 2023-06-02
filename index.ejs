@@ -1,0 +1,26 @@
+<!-- index.ejs -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Food Ordering</title>
+</head>
+<body>
+  <h1>Menu</h1>
+  <form action="/order" method="POST">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br>
+
+    <h2>Choose items:</h2>
+    <% for (let item of menu) { %>
+      <input type="checkbox" id="<%= item.id %>" name="items" value="<%= item.id %>">
+      <label for="<%= item.id %>"><%= item.name %> - $<%= item.price %></label><br>
+    <% } %>
+
+    <input type="submit" value="Place Order">
+  </form>
+</body>
+</html>
